@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style id="dark-mode" type="text/css"></style>
     <title>Cars</title>
   </head>
   <body class="body">
@@ -21,9 +22,40 @@
 
 
     <h1>Cars</h1>
-    <p>I have enjoyed cars since I was little and from the moment I was able to drive I always enjoyied Long Drives. I'm really intrested in Car modifications but since  I'm a college student so I have put that on hold. I like both gas and EV cars, EV hare fun with high acceleration but, I believe gas cars have more charisma when driving. Hearing the <strong> Turbo Spool </strong> or the <strong>Super Charger Wine.</strong> is the best part about them.</p>
+    <p>I have enjoyed cars since I was little and from the moment I was able to drive I always enjoyied Long Drives. I'm really intrested in Car modifications but since  I'm a college student so I have put that on hold. I like both gas and EV cars, EV hare fun with high acceleration but, I believe gas cars have more charisma when driving. Hearing the <strong> Turbo Spool </strong> or the <strong>Super Charger Wine.</strong> It's the best part about them.</p>
 
     <img src="sports-car.png" alt="#"/>
+    <button id="toggle-dark-mode">Toggle Dark Mode</button>
+    <script>
+      const darkModeStyles = `
+        body {
+          background-color: #121212;
+          color: white;
+        }
+      `;
 
+      const darkModeStyleElement = document.getElementById('dark-mode');
+      const toggleButton = document.getElementById('toggle-dark-mode');
+
+      // Check if dark mode is enabled in local storage
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        darkModeStyleElement.innerHTML = darkModeStyles;
+        toggleButton.textContent = 'Disable Dark Mode';
+      }
+
+      toggleButton.addEventListener('click', function() {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+          // Disable dark mode
+          localStorage.setItem('darkMode', 'disabled');
+          darkModeStyleElement.innerHTML = '';
+          toggleButton.textContent = 'Enable Dark Mode';
+        } else {
+          // Enable dark mode
+          localStorage.setItem('darkMode', 'enabled');
+          darkModeStyleElement.innerHTML = darkModeStyles;
+          toggleButton.textContent = 'Disable Dark Mode';
+        }
+      });
+    </script>
   </body>
 </html>
